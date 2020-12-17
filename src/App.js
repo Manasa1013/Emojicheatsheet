@@ -1,152 +1,126 @@
 import React, { useState } from "react";
 import "./styles.css";
 
-const emojiSmileyDictionary = {
-  "😀": "Grinning Face",
-  "😃": "Grinning Face with Big Eyes",
-  "😄": "Grinning Face with Smiling Eyes",
-  "😁": "Beaming Face with Smiling Eyes",
-  "😆": "Grinning Squinting Face",
-  "😅": "Grinning Face with Sweat",
-  "🤣": "Rolling on the Floor Laughing",
-  "😂": "Face with Tears of Joy",
-  "🙂": "Slightly Smiling Face",
-  "🙃": "Upside-Down Face",
-  "😉": "Winking Face",
-  "😊": "Smiling Face with Smiling Eyes",
-  "😇": "Smiling Face with Halo",
-  "🥰": "Smiling Face with Hearts",
-  "😍": "Smiling Face with Heart-Eyes",
-  "🤩": "Star-Struck",
-  "😘": "Face Blowing a Kiss",
-  "😗": "Kissing Face",
-  "😚": "Kissing Face with Closed Eyes",
-  "😙": "Kissing Face with Smiling Eyes",
-  "😋": "Face Savoring Food",
-  "😛": "Face with Tongue",
-  "😜": "Winking Face with Tongue",
-  "🤪": "Zany Face",
-  "😝": "Squinting Face with Tongue",
-  "🤑": "Money-Mouth Face",
-  "🤗": "Hugging Face",
-  "🤭": "Face with Hand Over Mouth",
-  "🤫": "Shushing Face",
-  "🤔": "Thinking Face",
-  "🤐": "Zipper-Mouth Face",
-  "🤨": "Face with Raised Eyebrow",
-  "😐": "Neutral Face",
-  "😑": "Expressionless Face",
-  "😶": "Face Without Mouth",
-  "😏": "Smirking Face",
-  "😒": "Unamused Face",
-  "🙄": "Face with Rolling Eyes",
-  "😬": "Grimacing Face",
-  "🤥": "Lying Face",
-  "😌": "Relieved Face",
-  "😔": "Pensive Face",
-  "😪": "Sleepy Face",
-  "🤤": "Drooling Face",
-  "😴": "Sleeping Face",
-  "😷": "Face with Medical Mask",
-  "🤒": "Face with Thermometer",
-  "🤕": "Face with Head-Bandage",
-  "🤢": "Nauseated Face",
-  "🤮": "Face Vomiting",
-  "🤧": "Sneezing Face",
-  "🥵": "Hot Face",
-  "🥶": "Cold Face",
-  "🥴": "Woozy Face",
-  "😵": "Dizzy Face",
-  "🤯": "Exploding Head",
-  "🤠": "Cowboy Hat Face",
-  "🥳": "Partying Face",
-  "😎": "Smiling Face with Sunglasses",
-  "🤓": "Nerd Face",
-  "🧐": "Face with Monocle",
-  "😕": "Confused Face",
-  "😟": "Worried Face",
-  "🙁": "Slightly Frowning Face",
-  "☹️": "Frowning Face",
-  "😮": "Face with Open Mouth",
-  "😯": "Hushed Face",
-  "😲": "Astonished Face",
-  "😳": "Flushed Face",
-  "🥺": "Pleading Face",
-  "😦": "Frowning Face with Open Mouth",
-  "😧": "Anguished Face",
-  "😨": "Fearful Face",
-  "😰": "Anxious Face with Sweat",
-  "😥": "Sad but Relieved Face",
-  "😢": "Crying Face",
-  "😭": "Loudly Crying Face",
-  "😱": "Face Screaming in Fear",
-  "😖": "Confounded Face",
-  "😣": "Persevering Face",
-  "😞": "Disappointed Face",
-  "😓": "Downcast Face with Sweat",
-  "😩": "Weary Face",
-  "😫": "Tired Face",
-  "🥱": "Yawning Face",
-  "😤": "Face with Steam From Nose",
-  "😀 ": "Grinning Face"
+//defining practices first
+const yoga = ["Warmup", "Asana-Library", "Suryanamaskar", "Relaxation"];
+const meditation = [
+  "Beginner-guide to Meditation",
+  "Pranayama",
+  "Stress-reduction",
+  "Understanding the mind"
+];
+const dancefitness = [
+  "Beginner Cardio Dance",
+  "Cardio Tone and Dance",
+  "Cardio Dance with Punjabi Songs",
+  "Belly Dancing",
+  "Dance for Joy"
+];
+const weightloss = [
+  "Calorie-crush",
+  "Calorie-crush",
+  "HIIT",
+  "Abs,butt and thigh",
+  "Strength",
+  "Belly burn"
+];
+const workfromhomeTips = [
+  "Stay Active",
+  "Healthy Spine",
+  "5 min workout",
+  "Stretch and Release",
+  "Move well"
+];
+const fitterWays = {
+  yoga: yoga,
+  meditation: meditation,
+  danceFitness: dancefitness,
+  weightLoss: weightloss,
+  workFromHomeTips: workfromhomeTips
 };
-const listEmojiKeys = Object.keys(emojiSmileyDictionary);
-// console.log(listEmojiKeys)
+const fitterWaysKeys = Object.keys(fitterWays);
 
 export default function App() {
-  var [emojiMeaning, setEmojiMeaning] = useState("");
-  function emojiInputHandler(event) {
-    var userEmojiInput = event.target.value;
-    //the emoji or the input entered
-    emojiMeaning = emojiSmileyDictionary[userEmojiInput];
-    //value of emoji or input
-    console.log(emojiMeaning);
-    if (emojiMeaning === undefined) {
-      emojiMeaning = "Oops!!try only smiley emojis";
-    }
-    setEmojiMeaning(emojiMeaning);
+  var [workOuts, setWorkOuts] = useState("yoga");
+  function onClickHandler(way) {
+    setWorkOuts(way);
   }
-  function styleEmoji() {
-    const manStyle = {
-      padding: "1rem 2rem",
-      margin: "2rem",
-      textDecoration: "none",
-
-      display: "block",
-      textAlign: "none",
-      overflow: "hidden",
-
-      fontSize: "2rem"
-    };
-    return manStyle;
-  }
-  function listItemClickHandler(emoji) {
-    // var emojiDisplay = [emojiSmileyDictionary[emoji]];
-    // console.log(emojiSmileyDictionary[emoji]);
-    setEmojiMeaning(emojiSmileyDictionary[emoji]);
-  }
+  const styleNavigation = {
+    backgroundColor: "#3ff39f",
+    color: "white",
+    padding: "1rem",
+    borderBottomLeftRadius: "1rem",
+    textAlign: "right",
+    margin: "0px"
+  };
+  const styleDiv = {};
+  const styleImage = {
+    maxWidth: "80%",
+    width: "350px",
+    display: "block",
+    margin: "1rem"
+  };
+  const styleUnorderList = {
+    listStyle: "none",
+    display: "inline-block",
+    padding: "1em 2em"
+  };
+  const styleList = {
+    textDecoration: "none",
+    cursor: "pointer"
+  };
   return (
-    <div className="App">
-      <h1>Use apt emojis with this app!!</h1>
-      <input
-        onChange={emojiInputHandler}
-        placeholder="Enter the emoji/emoticon to know the meaning"
-      />
-      <h1>{}</h1>
-      <h1 style={{ color: "#ff1458" }}> {emojiMeaning} </h1>
-      <ul style={styleEmoji()}>
-        {listEmojiKeys.map(function (emoji, index) {
-          return (
-            <span
-              key={emoji}
-              style={{ cursor: "pointer", margin: "5px" }}
-              onClick={() => listItemClickHandler(emoji)}
-            >
-              {emoji}
-            </span>
-          );
-        })}
-      </ul>
+    <div className="App" style={styleDiv}>
+      <nav className="navigation" style={styleNavigation}>
+        Fitter the happier{" "}
+        <span role="img" aria-label="workout">
+          🏋
+        </span>
+        ️
+      </nav>
+
+      <header className="minds">
+        <img
+          className="minds-img"
+          style={styleImage}
+          src="../image/workout.png"
+          alt=""
+        />
+        <h1 className="minds-heading">
+          Stronger,<span className="heading-inverted">Faster,Better</span>
+        </h1>
+      </header>
+      <h2>
+        Get stronger through
+        <ul style={styleUnorderList}>
+          {fitterWaysKeys.map((way) => (
+            <li onClick={() => onClickHandler(way)} style={styleList}>
+              {way}
+            </li>
+          ))}
+        </ul>
+      </h2>
+      <div style={styleDiv}>
+        <ul style={styleUnorderList}>
+          <li style={styleList}>
+            {Object.values(fitterWays[workOuts]).map((way) => way)}
+          </li>
+        </ul>
+      </div>
+      <footer id="main-footer">
+        <div class="icons">
+          <a href="https://www.instagram.com/manasamandalreddy">
+            <em class="fab fa-instagram fa-2x"></em>
+          </a>
+          <a href="https://www.linkedin.com/in/manasa-mandalreddylreddy">
+            <em class="fab fa-linkedin fa-2x"></em>
+          </a>
+          <a href="https://github.com/Manasa1013">
+            <em class="fab fa-github fa-2x"></em>
+          </a>
+        </div>
+        Copyright &copy; 2020
+      </footer>
     </div>
   );
 }
